@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: observability-sample-deployment
+  labels:
+    app: observability-sample-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: observability-sample
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/nginx.logs: '[{"source":"observability-sample","service":"webapi"}]'
+      labels:
+        app: observability-sample
+    spec:
+      containers:
+      - name: observability-sample
+        image: philjhale/datadog-observability-sample-app:latest
+        ports:
+        - containerPort: 80 # port exposed by container
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: observability-sample-service
+  labels:
+    app: observability-sample-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 4000 # load balancer port (i.e. the public port)
+    targetPort: 80 # connect to contains on this port
+    protocol: TCP
+  selector:
+    app: observability-sample # must point to pod label
