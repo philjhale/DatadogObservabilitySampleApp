@@ -67,6 +67,12 @@ Once the public IP appears you can access the API in your browser. https://[[Pub
 
 
 
+## References
+
+Annotations https://docs.datadoghq.com/agent/autodiscovery/?tab=kubernetes
+Daemon setup https://docs.datadoghq.com/agent/kubernetes/daemonset_setup/
+
+
 
 
 

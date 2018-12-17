@@ -33,12 +33,14 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: status.hostIP
-        - name: DD_LOGS_ENABLED
+        - name: DD_LOGS_ENABLED # Enable log collection
           value: "true"
-        - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL
+        - name: DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL # Enable log collection
           value: "true"
         - name: DD_AC_EXCLUDE
           value: "name:datadog-agent"
+        - name: DD_APM_ENABLED # Enable tracing 
+          value: "true"
         resources:
           requests:
             memory: "256Mi"
