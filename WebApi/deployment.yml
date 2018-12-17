@@ -12,7 +12,7 @@ spec:
   template:
     metadata:
       annotations:
-        ad.datadoghq.com/nginx.logs: '[{"source":"observability-sample","service":"webapi"}]'
+        ad.datadoghq.com/observability-sample.logs: '[{"source":"observability-sample","service":"webapi"}]' # https://docs.datadoghq.com/agent/autodiscovery/?tab=kubernetes
       labels:
         app: observability-sample
     spec:
