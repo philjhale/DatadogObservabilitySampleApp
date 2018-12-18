@@ -21,6 +21,13 @@ spec:
         image: philjhale/datadog-observability-sample-app:latest
         ports:
         - containerPort: 80 # port exposed by container
+        env:
+        - name: DD_AGENT_HOST
+          valueFrom:
+            fieldRef:
+              fieldPath: status.hostIP
+        - name: DD_AGENT_PORT
+          value: "8126"
 ---
 apiVersion: v1
 kind: Service
